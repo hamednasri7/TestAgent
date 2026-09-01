@@ -1,0 +1,45 @@
+@model UserManagement.Models.User
+@{
+    ViewData["Title"] = "افزودن کاربر";
+}
+
+<h1>افزودن کاربر</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="FirstName" class="form-label"></label>
+                <input asp-for="FirstName" class="form-control" autocomplete="off" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="LastName" class="form-label"></label>
+                <input asp-for="LastName" class="form-control" autocomplete="off" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Age" class="form-label"></label>
+                <input asp-for="Age" class="form-control" autocomplete="off" inputmode="numeric" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Mobile" class="form-label"></label>
+                <input asp-for="Mobile" class="form-control" autocomplete="off" inputmode="numeric" maxlength="11" dir="ltr" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">ذخیره</button>
+            <a asp-action="Index" class="btn btn-secondary">انصراف</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

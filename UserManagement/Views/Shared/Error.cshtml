@@ -1,0 +1,14 @@
+@model UserManagement.Models.ErrorViewModel
+@{
+    ViewData["Title"] = "خطا";
+}
+
+<h1 class="text-danger">خطا.</h1>
+<h2 class="text-danger">مشکلی در پردازش درخواست شما رخ داد.</h2>
+
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+}

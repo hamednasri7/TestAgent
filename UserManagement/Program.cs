@@ -4,7 +4,7 @@ using UserManagement.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages()
+builder.Services.AddControllersWithViews()
     .AddMvcOptions(options =>
     {
         options.ModelBindingMessageProvider.SetValueMustBeANumberAccessor(
@@ -26,7 +26,7 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
+    app.UseExceptionHandler("/Home/Error");
 }
 
 app.UseRouting();
@@ -34,8 +34,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapStaticAssets();
-app.MapGet("/", () => Results.Redirect("/Users"));
-app.MapRazorPages()
-   .WithStaticAssets();
+app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Users}/{action=Index}/{id?}")
+    .WithStaticAssets();
 
 app.Run();
