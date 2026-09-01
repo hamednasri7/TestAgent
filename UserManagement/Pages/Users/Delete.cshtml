@@ -1,0 +1,33 @@
+@page
+@model UserManagement.Pages.Users.DeleteModel
+@{
+    ViewData["Title"] = "حذف کاربر";
+}
+
+<h1>حذف کاربر</h1>
+
+<div class="alert alert-warning">آیا از حذف این کاربر مطمئن هستید؟</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">نام</dt>
+            <dd class="col-sm-8">@Model.Input.FirstName</dd>
+
+            <dt class="col-sm-4">نام خانوادگی</dt>
+            <dd class="col-sm-8">@Model.Input.LastName</dd>
+
+            <dt class="col-sm-4">سن</dt>
+            <dd class="col-sm-8">@Model.Input.Age</dd>
+
+            <dt class="col-sm-4">موبایل</dt>
+            <dd class="col-sm-8">@Model.Input.Mobile</dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="Input.Id" />
+            <button type="submit" class="btn btn-danger">حذف</button>
+            <a asp-page="Index" class="btn btn-secondary">انصراف</a>
+        </form>
+    </div>
+</div>
